@@ -162,6 +162,50 @@ Fill in the Score Decisions table:
 Skip this step if the `## Grading Criteria` section in MIND.md does not
 contain `Hidden test coverage: enabled`.
 
+### Hidden test file convention
+
+Hidden tests are stored in `labs/<lab-slug>/submissions/<group-slug>/hidden-tests/`
+and named using the pattern:
+
+```
+hidden-<criterion-slug>-<scenario-slug>.<ext>
+```
+
+Examples: `hidden-input-listener-mousedown-edge.test.js`, `hidden-game-slam-double.test.js`
+
+This naming makes them unambiguous and prevents confusion with starter tests.
+
+### 3b-check — Check for existing hidden tests
+
+Before anything else, check whether `hidden-tests/` already exists and
+contains files matching the `hidden-*` convention:
+
+```bash
+ls labs/<lab-slug>/submissions/<group-slug>/hidden-tests/hidden-* 2>/dev/null
+```
+
+**Files found:** present a summary to the professor:
+
+```
+Hidden tests already exist for <group-slug>:
+  hidden-input-listener-mousedown-edge.test.js   ✅ passed / ❌ failed
+  hidden-game-slam-double.test.js                ✅ passed / ❌ failed
+  ...
+
+What would you like to do?
+  1. Re-run existing tests (no changes)
+  2. Add new scenarios
+  3. Remove or replace a specific test
+  4. Regenerate all from scratch
+```
+
+Handle the professor's choice and skip to the relevant sub-step.
+Re-running goes directly to 3b-3. Adding goes to 3b-1 (gap analysis)
+then 3b-2 (new scenarios only). Regenerating clears the folder and
+runs the full flow from 3b-0.
+
+**No files found:** proceed to 3b-0 (full procedure).
+
 ### 3b-0 — Detect and verify tooling
 
 Inspect the submission to determine the test framework in use:
