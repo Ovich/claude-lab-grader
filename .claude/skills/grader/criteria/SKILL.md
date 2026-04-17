@@ -116,17 +116,65 @@ Re-read `labs/<lab-slug>/lab-spec.md`. Look for:
 
 Append findings to `criteria-work.md`.
 
+### 1e — Standard plugins
+
+Standard plugins are reusable criteria blocks that apply across many labs.
+They are opt-in — always ask the professor before including any.
+
+Present the available plugins and ask which to include:
+
+```
+Standard criteria plugins available:
+
+  [A] Automated tests
+      Scores based on a test suite included in the repo.
+      Suggested: N pts (auto-detected from repo — adjust as needed)
+      Include? If yes: how many points total?
+
+  [B] Teamwork (git collaboration)
+      Evaluates how the team collaborated using git. Checks:
+        • Multiple distinct commit authors
+        • Commits spread over time (not all submitted in the last hours)
+        • Use of pull requests or merge commits
+      Suggested: 2–5 pts depending on lab weight
+      Include? If yes: how many points?
+
+Which plugins do you want to include, and with how many points each?
+(Answer "none" to skip all, or name specific ones with their point value)
+```
+
+Notes:
+- **Automated tests** are proposed only if a test suite is detected in the
+  sampled submissions (e.g. `package.json` with a test script, `Makefile`
+  with a test target). Do not propose if no test suite is found.
+- **Teamwork** is always proposed for group labs. For individual labs, skip
+  it unless the professor brings it up.
+- To determine whether the lab is individual or group, check the number of
+  distinct authors across a few submissions. If most repos have only one
+  author, treat it as individual and note this when presenting the plugin.
+
+Save the professor's plugin choices to `criteria-work.md` before proceeding.
+
 ---
 
 ## Step 2 — Analyse and propose criteria
 
-Using everything in `criteria-work.md`, draft a criteria proposal:
+Using everything in `criteria-work.md`, draft a full criteria proposal
+combining lab-specific criteria and any selected plugins.
+
+**Weighting guidance:**
+- If the lab spec states explicit point values, use them exactly.
+- If not, propose weights based on relative importance: complexity of the
+  implementation (inferred from solution diff size and submission variation),
+  emphasis in the lab spec, and whether the criterion is automated or manual.
+  Show your reasoning briefly next to each proposed value so the professor
+  can adjust it.
+- Mark each value as `explicit` (from spec) or `proposed` (your estimate).
 
 - Each criterion maps to a concrete, gradable deliverable.
-- Distinguish `automated` (test suite) from `manual` (code review / visual).
-- Infer max points from any breakdown in the lab spec; otherwise propose
-  relative weights.
-- Note confidence: `explicit from spec` vs `inferred`.
+- Distinguish `automated` (test suite), `manual` (code review / visual),
+  `plugin` (standard block).
+- Note confidence: `explicit from spec` vs `proposed`.
 
 Present the proposal to the professor in two explicit confirmation blocks:
 
@@ -134,19 +182,17 @@ Present the proposal to the professor in two explicit confirmation blocks:
 ```
 Proposed grading criteria for <lab-name>:
 
-  Criterion              Max   Source
-  ─────────────────────────────────────
-  CriterionA              8    automated (test suite)
-  CriterionB              4    manual
+  Criterion              Max   Type        Weight basis
+  ──────────────────────────────────────────────────────────────────
+  CriterionA              8    automated   explicit from spec
+  CriterionB              4    manual      proposed — largest diff section
+  Teamwork                3    plugin      proposed — group lab, 3 signals
   ...
   Total                  /25
 
   Grade formula: round((points / 25 × 5) + 1 − penalties, 0.1)
 
-  Source: inferred from lab-spec.md + submission analysis
-  Low confidence: [anything uncertain — e.g. "no point breakdown in spec"]
-
-Does this look right? Any changes before I proceed?
+Does this look right? Adjust any points or add/remove criteria before I proceed.
 ```
 
 **Block 2 — Late penalty formula:**
