@@ -213,6 +213,13 @@ Examples: `4-tetris-ii`, `2-tetris-i`.
 After creating the structure, immediately create a skeleton MIND.md
 (Step 3) so all subsequent progress is tracked inside it.
 
+When writing the skeleton, populate the **Workspace Layout** section using
+the actual paths and items confirmed in Steps 0–2:
+- Include only `_global/` subdirectories that are used by this lab.
+- List every file present under `labs/<lab-slug>/` (criteria file, diff, etc.).
+- Expand `submissions/` with one line per cloned group slug (filled after Step 4).
+- Add a short description after each `←` explaining the item's role.
+
 ---
 
 ## Step 3 — Create MIND.md skeleton
@@ -230,6 +237,28 @@ in a state that does not reflect actual progress.
 **Lab spec:** lab-spec.md
 **Solution ref:** <path or n/a>
 **Course material:** <path or n/a>
+
+---
+
+## Workspace Layout
+<!-- Effective folder structure for this lab — globals included, sibling labs omitted.  -->
+<!-- Populate from Steps 0–2 findings. Update if paths change during the session.      -->
+
+```
+<workspace>/
+├── _global/
+│   ├── course-material/         ← <!-- description, e.g. "shared slides and reference pages" -->
+│   └── lab-solutions/
+│       └── <lab-slug>/          ← <!-- description, e.g. "reference implementation (template: main, solution: origin/solution)" -->
+└── labs/
+    └── <lab-slug>/              ← this lab's grading session root
+        ├── MIND.md              ← this file — central tracker for the grading session
+        ├── lab-spec.md          ← lab assignment specification (converted to markdown)
+        └── submissions/         ← one folder per student group
+            └── <group-slug>/    ← cloned student repo
+```
+<!-- Remove any global rows that are not used by this lab (e.g. no solution ref → remove lab-solutions row). -->
+<!-- Add rows for any other files present (e.g. grading-criteria.md, solution-diff.md).                    -->
 
 ---
 
