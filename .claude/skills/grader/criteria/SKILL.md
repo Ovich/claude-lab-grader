@@ -126,20 +126,20 @@ Present the available plugins and ask which to include:
 ```
 Standard criteria plugins available:
 
-  [A] Automated tests
-      Visible tests shipped with the starter kit — students know them.
+  [A] Automated tests — visible
+      Runs the starter test suite. Students know these tests.
       Scoring: 1 pt per passing test (proposed; professor can adjust).
-      These are baseline "free" points for students who do the work.
+      Cost: fast — seconds per group, minimal tokens.
+      Include? If yes: confirm or adjust the 1 pt/test weight.
 
-      Additionally: do you want hidden test coverage per group?
-      If yes, grader/grade will — for each group — analyse their
-      implementation, propose additional test scenarios targeting edge
-      cases or untested features, let you pick which to generate and run,
-      and map any failures back to deductions on existing criteria.
-      This requires an extra interactive step per group during grading.
-
-      Include visible tests? If yes: confirm or adjust the 1 pt/test weight.
-      Enable hidden test coverage? (yes / no)
+  [B] Automated tests — hidden coverage
+      Requires [A]. After analysing each group's code, grader/grade
+      will propose edge-case and untested-feature scenarios, generate
+      tests, run them, and map failures to deductions on existing criteria.
+      Cost: 1–3 min per group, significant token use (reads full student
+      diff, generates test code, runs and interprets results).
+      For a typical lab with 14 groups: ~20–40 min of extra grading time.
+      Include? (yes / no)
 
   [B] Teamwork (git collaboration)
       Evaluates how the team collaborated using git. Checks:
@@ -154,10 +154,13 @@ Which plugins do you want to include, and with how many points each?
 ```
 
 Notes:
-- **Automated tests** are proposed only if a test suite is detected in the
-  sampled submissions (e.g. `package.json` with a test script, `Makefile`
-  with a test target). Do not propose if no test suite is found. Count the
-  tests in the starter kit to anchor the 1 pt/test proposal.
+- **Automated tests — visible [A]** are proposed only if a test suite is
+  present in the **starter code** (the template branch of the solution ref,
+  or the initial commit of any submission before student changes). Tests
+  added by students do not count. Do not propose if no starter tests exist.
+  Count the starter tests to anchor the 1 pt/test proposal.
+- **Automated tests — hidden [B]** requires [A] to be enabled. If the
+  professor selects [B] without [A], flag the dependency and ask to confirm.
 - If the professor enables hidden test coverage, record it in the
   `## Grading Criteria` section of MIND.md as a note under the automated
   tests criterion:
