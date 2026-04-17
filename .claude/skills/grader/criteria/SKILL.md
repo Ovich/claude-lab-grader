@@ -133,9 +133,11 @@ Standard criteria plugins available:
       Include? If yes: confirm or adjust the 1 pt/test weight.
 
   [B] Automated tests — hidden coverage
-      Requires [A]. After analysing each group's code, grader/grade
-      will propose edge-case and untested-feature scenarios, generate
-      tests, run them, and map failures to deductions on existing criteria.
+      After analysing each group's code, grader/grade will propose
+      edge-case and untested-feature scenarios, generate tests, run them,
+      and map failures to deductions on existing criteria.
+      Required tooling is checked and proposed for installation per group
+      during grading — nothing needs to be set up now.
       Cost: 1–3 min per group, significant token use (reads full student
       diff, generates test code, runs and interprets results).
       For a typical lab with 14 groups: ~20–40 min of extra grading time.
@@ -159,8 +161,8 @@ Notes:
   or the initial commit of any submission before student changes). Tests
   added by students do not count. Do not propose if no starter tests exist.
   Count the starter tests to anchor the 1 pt/test proposal.
-- **Automated tests — hidden [B]** requires [A] to be enabled. If the
-  professor selects [B] without [A], flag the dependency and ask to confirm.
+- **Automated tests — hidden [B]** is independent of [A]. Tooling is
+  detected and proposed per group during grading — not during init.
 - If the professor enables hidden test coverage, record it in the
   `## Grading Criteria` section of MIND.md as a note under the automated
   tests criterion:

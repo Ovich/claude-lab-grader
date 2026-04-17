@@ -162,6 +162,33 @@ Fill in the Score Decisions table:
 Skip this step if the `## Grading Criteria` section in MIND.md does not
 contain `Hidden test coverage: enabled`.
 
+### 3b-0 — Detect and verify tooling
+
+Inspect the submission to determine the test framework in use:
+
+| Signal | Framework | Run command |
+|--------|-----------|-------------|
+| `package.json` with `jest`, `mocha`, `vitest` | Node.js | `npm test` / `npx <runner>` |
+| `Makefile` with test target | Make | `make test` |
+| `pom.xml` | Maven/JUnit | `mvn test` |
+| `requirements.txt` / `pytest.ini` | pytest | `pytest` |
+| other | ask professor | — |
+
+For each required tool, check availability:
+```bash
+<tool> --version 2>/dev/null && echo "ok" || echo "missing"
+```
+
+For any missing tool, propose installation before proceeding:
+> To run hidden tests for **<group-slug>** I need `<tool>`.
+> Install with: `<install command>`
+> Or run: `! <install command>` directly in this terminal.
+
+Wait for confirmation that all required tools are available before
+generating or running any tests. If the professor declines installation,
+skip hidden tests for this group and note it in grading-analysis.md:
+`> ⏭️ Hidden tests skipped — <tool> not available`
+
 ### 3b-1 — Identify coverage gaps
 
 Using the student's diff (from Step 3) and the existing test results
