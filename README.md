@@ -39,9 +39,9 @@ The grader works in three phases:
 
 ## Criteria opt-ins
 
-When generating criteria, the following standard plugins can be opted into:
+When generating criteria, the following standard opt-ins are available:
 
-| Plugin | What it grades | Cost |
+| Opt-in | What it grades | Cost |
 |--------|---------------|------|
 | **[A] Automated tests — visible** | Starter-kit tests students know about. 1 pt/test (adjustable). | Fast — seconds per group |
 | **[B] Automated tests — hidden** | Edge-case tests generated per group from their implementation, mapped to existing criteria as deductions. Tooling detected and proposed per group. | 1–3 min/group, significant tokens |
