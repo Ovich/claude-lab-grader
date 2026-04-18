@@ -327,12 +327,15 @@ and/or client-side as appropriate for the project type).
 
 ### Read the run plan
 
+If no live criteria exist in the procedure, skip Step 4 entirely.
+
 Read `## Run Plan` in MIND.md. Check `**AI-run:**`:
 
-**`opted-out`** — the professor runs the project independently. Ask:
-> Please run the submission for **<group-slug>** and test the live
-> criteria listed in the procedure. Report your findings for each
-> interaction and I'll record them in the analysis.
+**`opted-out`** — the professor handles the full live run independently.
+Do not attempt to start the project. Ask:
+> Please run **<group-slug>** and test the live criteria listed in the
+> procedure. Report your findings for each interaction and I'll record
+> them in the analysis.
 
 Wait for the professor's findings, then skip to "Adjust scores".
 

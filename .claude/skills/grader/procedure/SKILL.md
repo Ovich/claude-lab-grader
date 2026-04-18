@@ -174,8 +174,25 @@ validate them.
 
 Skip this step if no criterion has `**Source:** live`.
 
-If live criteria exist, inspect the starter code or solution reference to
-determine how the project should be started. Look for:
+If live criteria exist, a run plan is **required** — either AI-managed or
+professor-managed. The only valid reason to skip it is if the professor
+explicitly decides the live run is entirely their responsibility (opted-out).
+In that case the grader will collect findings from the professor without
+starting anything.
+
+Ask the professor upfront:
+> Live criteria require runtime testing. For each group, I can start the
+> project automatically and you perform the interactions — or you can run
+> everything yourself and report the findings to me.
+> 1. AI starts the project — professor tests
+> 2. Professor runs everything independently
+
+- **Option 2 chosen:** set `**AI-run:** opted-out` in `## Run Plan` in
+  MIND.md and skip the rest of this step. No run command is needed.
+- **Option 1 chosen:** proceed below to detect the run method.
+
+Inspect the starter code or solution reference to determine how the project
+should be started. Look for:
 - A `Dockerfile` or `docker-compose.yml` → prefer Docker
 - A language-specific entry point (`package.json`, `Makefile`, `pom.xml`, etc.)
 - A run script in the repo
