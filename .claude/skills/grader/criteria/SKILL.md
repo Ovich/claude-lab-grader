@@ -25,6 +25,28 @@ regenerate it whenever criteria change.
 
 ---
 
+## Criterion source types
+
+Every criterion — including opt-ins — must be assigned one or more source
+types. These types determine how grader/grade evaluates the criterion and
+what the grading procedure must describe.
+
+| Type | Definition |
+|------|------------|
+| **automated** | A tool runs (e.g. test suite, git log command) and the score is derived directly from its output. No AI judgment needed. |
+| **manual** | AI analyses deliverables (code, config files, git history, manifests) and makes a judgment call. No project needs to run. |
+| **live** | Runtime checks are required: the project is started (optionally by the agent) and the professor performs interactions and reports findings. |
+
+**Combinations are valid.** A criterion can be `manual + live` when AI
+analyses the code *and* the professor verifies behaviour at runtime. In that
+case the grading procedure must describe both the static analysis and the
+runtime checks.
+
+Opt-ins are ordinary criteria with a predefined scope — they carry source
+types like any other criterion.
+
+---
+
 ## Step 0 — Prerequisites and status check
 
 ### 0a — Verify init prerequisites
@@ -126,13 +148,13 @@ Present the available opt-ins and ask which to include:
 ```
 Standard criteria opt-ins available:
 
-  [A] Automated tests — visible
+  [A] Automated tests — visible                        [type: automated]
       Runs the starter test suite. Students know these tests.
       Scoring: 1 pt per passing test (proposed; professor can adjust).
       Cost: fast — seconds per group, minimal tokens.
       Include? If yes: confirm or adjust the 1 pt/test weight.
 
-  [B] Automated tests — hidden coverage
+  [B] Automated tests — hidden coverage                [type: automated]
       After analysing each group's code, grader/grade will propose
       edge-case and untested-feature scenarios, generate tests, run them,
       and map failures to deductions on existing criteria.
@@ -143,8 +165,8 @@ Standard criteria opt-ins available:
       For a typical lab with 14 groups: ~20–40 min of extra grading time.
       Include? (yes / no)
 
-  [C] Git & workflow practices
-      Evaluates how the student(s) used git throughout the lab.
+  [C] Git & workflow practices                         [type: manual]
+      AI analyses git history to evaluate how the student(s) worked.
       The exact depth is defined with the professor (see Notes below).
       Suggested: 2–5 pts depending on lab weight.
       Include? If yes: how many points?
@@ -215,11 +237,12 @@ Present the proposal to the professor in two explicit confirmation blocks:
 ```
 Proposed grading criteria for <lab-name>:
 
-  Criterion              Max   Type        Weight basis
-  ──────────────────────────────────────────────────────────────────
-  CriterionA              8    automated   explicit from spec
-  CriterionB              4    manual      proposed — largest diff section
-  Git & workflow          3    opt-in      proposed — confirmed depth with professor
+  Criterion              Max   Type              Weight basis
+  ────────────────────────────────────────────────────────────────────────
+  CriterionA              8    automated         explicit from spec
+  CriterionB              4    manual            proposed — largest diff section
+  CriterionC              5    manual + live     proposed — code + runtime check
+  Git & workflow          3    manual            proposed — confirmed depth with professor
   ...
   Total                  /25
 
