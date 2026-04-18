@@ -326,35 +326,28 @@ follow the Step 4b flow to register it and apply it retroactively.
 
 Read `## Run Plan` in MIND.md. Check `**AI-run:**`:
 
-**`opted-out`** — the professor handles the full live run independently.
-Do not attempt to start the project. Ask:
-> Please run **<group-slug>** and test the live criteria listed in the
-> procedure. Report your findings for each interaction and I'll record
-> them in the analysis.
-
-Wait for the professor's findings, then skip to "Adjust scores".
-
-**`approved`** — proceed below.
-
-Adapt the start command from the run plan to the current group:
-substitute `<group-slug>` in any paths, then start the project.
-**Always bind to host port 3333** to avoid conflicts.
-
-Save console output to `project-evidence.log` in the submission folder.
+**`approved`** — adapt the start command to the current group (substitute
+`<group-slug>` in any paths), then start the project. Always bind to host
+port 3333 to avoid conflicts. Save console output to `project-evidence.log`
+in the submission folder.
 
 If Docker is required but not running:
 > Docker Desktop is not running — please start it, then let me know.
 
-### Test the required interactions
+**`opted-out`** — do not start the project. The professor runs it independently.
 
-The professor performs the interactions. Before handing over, summarise:
-- Which interactions are expected to work based on the code analysis.
+### Collect findings (both paths)
+
+Before prompting the professor, summarise what to expect based on the
+code analysis:
+- Which interactions should work correctly.
 - Which have suspected issues and why.
 - Any edge cases worth testing.
 
 Then prompt:
-> **<group-slug>** is running at <url>. Please test the live criteria
-> listed in the procedure and report your findings.
+> **<group-slug>** is ready. Please test the live criteria listed in the
+> procedure and report your findings for each interaction.
+> (`approved`: project is running at <url> / `opted-out`: please start it yourself)
 
 Wait for the professor's findings. Record each result as a finding line
 in grading-analysis.md (`> ✅ / ⚠️ / ❌`).
