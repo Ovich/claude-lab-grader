@@ -37,7 +37,7 @@ The grader works in three phases:
 
 ---
 
-## Criteria plugins
+## Criteria opt-ins
 
 When generating criteria, the following standard plugins can be opted into:
 

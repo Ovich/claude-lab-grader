@@ -116,15 +116,15 @@ Re-read `labs/<lab-slug>/lab-spec.md`. Look for:
 
 Append findings to `criteria-work.md`.
 
-### 1e — Standard plugins
+### 1e — Standard opt-ins
 
-Standard plugins are reusable criteria blocks that apply across many labs.
+Standard opt-ins are reusable criteria blocks that apply across many labs.
 They are opt-in — always ask the professor before including any.
 
-Present the available plugins and ask which to include:
+Present the available opt-ins and ask which to include:
 
 ```
-Standard criteria plugins available:
+Standard criteria opt-ins available:
 
   [A] Automated tests — visible
       Runs the starter test suite. Students know these tests.
@@ -151,7 +151,7 @@ Standard criteria plugins available:
       Suggested: 2–5 pts depending on lab weight
       Include? If yes: how many points?
 
-Which plugins do you want to include, and with how many points each?
+Which opt-ins do you want to include, and with how many points each?
 (Answer "none" to skip all, or name specific ones with their point value)
 ```
 
@@ -171,16 +171,16 @@ Notes:
   it unless the professor brings it up.
 - To determine whether the lab is individual or group, check the number of
   distinct authors across a few submissions. If most repos have only one
-  author, treat it as individual and note this when presenting the plugin.
+  author, treat it as individual and note this when presenting the opt-in.
 
-Save the professor's plugin choices to `criteria-work.md` before proceeding.
+Save the professor's opt-in choices to `criteria-work.md` before proceeding.
 
 ---
 
 ## Step 2 — Analyse and propose criteria
 
 Using everything in `criteria-work.md`, draft a full criteria proposal
-combining lab-specific criteria and any selected plugins.
+combining lab-specific criteria and any selected opt-ins.
 
 **Weighting guidance:**
 - If the lab spec states explicit point values, use them exactly.
@@ -193,7 +193,7 @@ combining lab-specific criteria and any selected plugins.
 
 - Each criterion maps to a concrete, gradable deliverable.
 - Distinguish `automated` (test suite), `manual` (code review / visual),
-  `plugin` (standard block).
+  `opt-in` (standard block).
 - Note confidence: `explicit from spec` vs `proposed`.
 
 Present the proposal to the professor in two explicit confirmation blocks:
@@ -206,7 +206,7 @@ Proposed grading criteria for <lab-name>:
   ──────────────────────────────────────────────────────────────────
   CriterionA              8    automated   explicit from spec
   CriterionB              4    manual      proposed — largest diff section
-  Teamwork                3    plugin      proposed — group lab, 3 signals
+  Teamwork                3    opt-in      proposed — group lab, 3 signals
   ...
   Total                  /25
 
