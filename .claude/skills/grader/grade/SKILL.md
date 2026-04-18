@@ -69,8 +69,16 @@ Read `labs/<lab-slug>/MIND.md`. Extract:
   Also note: grade formula, late penalty rule, all penalty IDs and
   deductions — these must be applied consistently to every group.
 
-If Phase 1 is not fully checked off, stop and tell the professor:
-> Init is not complete. Please finish `grader/init` before grading.
+Check that the following Phase 1 items are ticked — stop if any are missing:
+- `Submissions cloned`
+- `Grading criteria defined`
+- `Grading procedure approved`
+- `Grading analysis template generated`
+
+Also check `## Solution Diff` in MIND.md. If present, read it now —
+use it as reference context during code analysis (Step 3) to understand
+what a correct implementation looks like. Never quote solution code in
+grading-analysis.md.
 
 ---
 

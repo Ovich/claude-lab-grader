@@ -8,7 +8,7 @@ Audit performed 2026-04-18.
 | 2 | Bug | `procedure` | AI-run question asked twice in Step 2a — once upfront, once again when presenting the DRAFT. | ✅ |
 | 3 | Bug | `README` | "Plugin" column label and section text not renamed to "opt-in" after the terminology change. | ✅ |
 | 4 | Gap | `grade` | Re-grading Tracker (created by `criteria` R3b on mid-session criteria changes) is never checked by `grade`. Step 1 only looks for empty Analysis columns — re-grading groups already have one and are silently skipped. | ✅ |
-| 5 | Gap | `grade` | Phase 1 completeness check blocks on `Solution diff generated`, which is optional (no solution ref → item stays unchecked → grading permanently blocked). Should only block on required items. | |
+| 5 | Gap | `grade` | Phase 1 completeness check blocks on `Solution diff generated`, which is optional (no solution ref → item stays unchecked → grading permanently blocked). Should only block on required items. | ✅ |
 | 6 | Gap | `procedure` | Option 2 ("Update only specific criteria subsections") in Step 0 is listed but never specified — no steps describe how to select which subsections to regenerate or how to write only those. | |
 | 7 | Minor | `grade` | Step 5 summary template always shows Tests / Manual / Live lines regardless of which are in the grading plan. Should conditionally include only applicable lines. | |
 | 8 | Minor | `init` | Nested HTML comments in MIND.md template (`<!-- ... <!-- status: DRAFT --> -->`) are parser-fragile — the inner `-->` closes the outer comment early. | |

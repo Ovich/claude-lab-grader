@@ -122,7 +122,7 @@ Mark optional items clearly.
 | 1 | Lab name and number (e.g. "4 · Tetris II") | ✅ |
 | 2 | Course name (e.g. "TWEB26 · HEIG-VD") | ✅ |
 | 3 | Student submissions source (see options below) | ✅ |
-| 4 | Solution reference — git URL or local path, and which branch | optional |
+| 4 | Solution reference — git URL or local path, and which branch | optional ⭐ highly recommended — enables solution diff, which significantly improves grading accuracy |
 | 5 | Course material — already present, or provide URL | optional |
 | 6 | Existing grading criteria — file path or document | optional |
 
