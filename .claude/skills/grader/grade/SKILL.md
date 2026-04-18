@@ -76,7 +76,11 @@ If Phase 1 is not fully checked off, stop and tell the professor:
 
 ## Step 1 — Select group to grade
 
-Find the first group in the scoring table whose Analysis column is empty.
+If `## Re-grading Tracker` exists in MIND.md, prioritise groups with
+status `⏳ needs re-grading` over ungraded ones.
+
+Find the first group in the scoring table whose Analysis column is empty
+(or is flagged for re-grading).
 Present it to the professor for confirmation:
 
 > Next up: **<group-slug>** (N remaining). Shall I proceed, or grade a
@@ -463,10 +467,12 @@ Once grading-analysis.md is complete and scores are final:
    - Set the Analysis column to the relative path:
      `submissions/<group-slug>/grading-analysis.md`
 
-2. Tick the Phase 2 counter: `All groups graded (N / Total)`.
+2. If the group was in the Re-grading Tracker, mark it `✅ re-graded`.
+
+3. Tick the Phase 2 counter: `All groups graded (N / Total)`.
    When all groups are done, fully tick `- [x] All groups graded`.
 
-3. Report a brief summary to the professor:
+4. Report a brief summary to the professor:
 
 ```
 ✅ <group-slug> — graded
