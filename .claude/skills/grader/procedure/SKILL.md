@@ -191,17 +191,16 @@ Ask the professor:
 MIND.md. During grading, the agent will ask the professor for findings
 on each live criterion. Skip the rest of this step.
 
-**Option 1 chosen:** ask the professor:
-> Do all groups share the same tech stack and project structure, or does
-> each group have a different project?
-> 1. Common stack — one run command works for all groups
-> 2. Different projects per group — run method varies
+**Option 1 chosen:** inspect a sample of submissions (3–5 repos) to detect
+whether groups share a common tech stack. Check for the same entry-point
+signals across repos: `Dockerfile`, `docker-compose.yml`, `package.json`,
+`Makefile`, `pom.xml`, run scripts, etc.
 
-**Common stack:** inspect the starter code or solution reference to
-determine how the project should be started. Look for:
-- A `Dockerfile` or `docker-compose.yml` → prefer Docker
-- A language-specific entry point (`package.json`, `Makefile`, `pom.xml`, etc.)
-- A run script in the repo
+- **All share the same stack** → common. Determine the run command from
+  the starter code or solution reference. Look for:
+  - A `Dockerfile` or `docker-compose.yml` → prefer Docker
+  - A language-specific entry point (`package.json`, `Makefile`, `pom.xml`, etc.)
+  - A run script in the repo
 
 Draft a specific run plan and present it to the professor for review:
 
@@ -220,9 +219,9 @@ Draft a specific run plan and present it to the professor for review:
 Iterate until the professor confirms, then write the approved plan to
 `## Run Plan` in MIND.md.
 
-**Different projects per group:** no single run command applies. Write a
-general run plan as a guide — the actual method is resolved per group
-during grading:
+- **Stacks differ across groups** → per-group. No single run command applies. Write a
+  general run plan as a guide — the actual method is resolved per group
+  during grading:
 
 ```markdown
 ## Run Plan
