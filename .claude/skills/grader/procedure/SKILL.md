@@ -110,6 +110,12 @@ key grading parameters from `## Grading Criteria` in MIND.md:
 **Grade formula:** <!-- e.g. round((Total / Max × 5) + 1 − penalties, 0.1) -->
 **Late penalty:** <!-- e.g. −0.5 per started late day, max −2 -->
 **Hidden test coverage:** <!-- enabled / disabled -->
+
+**Source type reference:**
+- `automated` — run a tool (test suite, git command); score derived from output, no judgment needed
+- `manual` — AI analyses deliverables (code, config, git history) and makes a judgment call; no runtime required
+- `live` — runtime checks required; project is started and professor performs interactions and reports findings
+- combinations (e.g. `manual + live`) — apply both: AI analyses code AND professor checks runtime
 ```
 
 Copy exact values from the criteria. If hidden test coverage is absent,
