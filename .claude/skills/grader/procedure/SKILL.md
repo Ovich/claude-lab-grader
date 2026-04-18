@@ -148,6 +148,9 @@ Guidelines per source type:
   expected behaviour in one sentence and the most common mistake in one sentence.
 - **Live** — list the exact interactions to perform (key press, mouse move,
   click target) and the expected visual or console result for each.
+  **Live criteria always require the professor to perform the runtime checks**
+  — the AI starts the project but the professor does the interactions and
+  reports findings. A run plan is generated separately (see Step 2a).
 
 **Penalty ID naming:** use a short prefix reflecting the criterion or mistake
 category, followed by a two-digit index (e.g. `IMPL-01`, `API-02`, `LATE-01`).
@@ -164,6 +167,39 @@ If none of these are available for a criterion, propose plausible deductions
 based on the criterion description and typical student mistakes for that type
 of task. Mark these as `[proposed — not yet observed]` so the professor can
 validate them.
+
+---
+
+## Step 2a — Generate run plan (live criteria only)
+
+Skip this step if no criterion has `**Source:** live`.
+
+If live criteria exist, inspect the starter code or solution reference to
+determine how the project should be started. Look for:
+- A `Dockerfile` or `docker-compose.yml` → prefer Docker
+- A language-specific entry point (`package.json`, `Makefile`, `pom.xml`, etc.)
+- A run script in the repo
+
+Generate a run plan and write it to `## Run Plan` in MIND.md:
+
+```markdown
+## Run Plan
+**Start command:** <!-- e.g. docker run ... / npm start / make run -->
+**Port:** <!-- e.g. http://localhost:3333 -->
+**AI-run:** <!-- approved / opted-out — filled after professor confirms -->
+**Notes:** <!-- any setup steps, env vars, or known issues -->
+```
+
+Include the run plan in the DRAFT presented to the professor in Step 3.
+Ask the professor:
+> Live criteria require runtime testing. For each group, I can start the
+> project automatically and you perform the interactions — or you can run
+> everything yourself and report the findings to me.
+> Which do you prefer?
+> 1. AI starts the project — professor tests
+> 2. Professor runs everything independently
+
+Set `**AI-run:**` to `approved` or `opted-out` based on the answer.
 
 ---
 

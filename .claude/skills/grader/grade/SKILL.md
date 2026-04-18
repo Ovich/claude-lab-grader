@@ -325,42 +325,41 @@ This confirms which project is running when multiple submissions are tested
 in sequence. Add it at the earliest point in the entry file (server-side
 and/or client-side as appropriate for the project type).
 
-### Detect how to run
+### Read the run plan
 
-Inspect the submission to determine the appropriate run method. Look for:
-- A `Dockerfile` or `docker-compose.yml` → use Docker (preferred for
-  isolation and reproducibility).
-- A language-specific entry point (`package.json`, `Makefile`, `pom.xml`,
-  `requirements.txt`, `mix.exs`, etc.) → use the appropriate toolchain
-  directly.
-- A run script provided in the repo.
+Read `## Run Plan` in MIND.md. Check `**AI-run:**`:
 
-If the run method is ambiguous, ask the professor before proceeding.
+**`opted-out`** — the professor runs the project independently. Ask:
+> Please run the submission for **<group-slug>** and test the live
+> criteria listed in the procedure. Report your findings for each
+> interaction and I'll record them in the analysis.
 
-**Always bind to host port 3333** to avoid conflicts with services
-commonly running on default ports.
+Wait for the professor's findings, then skip to "Adjust scores".
 
-> **Example — Node.js project with Docker:**
-> ```bash
-> docker run --rm \
->   -v "$(pwd)/labs/<lab-slug>/submissions/<group-slug>:/app" \
->   -w /app -p 3333:3000 \
->   node:lts-alpine sh -c "npm install && node server.js"
-> # open http://localhost:3333
-> ```
-> *(This is an example. Adapt the image, install command, and start
-> command to match the actual project.)*
+**`approved`** — proceed below.
+
+Adapt the start command from the run plan to the current group:
+substitute `<group-slug>` in any paths, then start the project.
+**Always bind to host port 3333** to avoid conflicts.
 
 Save console output to `project-evidence.log` in the submission folder.
 
+If Docker is required but not running:
+> Docker Desktop is not running — please start it, then let me know.
+
 ### Test the required interactions
 
-The interactions to test are defined by the grading procedure in MIND.md.
-Test each one and note findings. At minimum, verify:
-- The project starts without errors.
-- Each required user interaction produces the expected result.
-- The browser/client console has no unexpected errors.
-- Edge/failure cases behave correctly (invalid actions are ignored).
+The professor performs the interactions. Before handing over, summarise:
+- Which interactions are expected to work based on the code analysis.
+- Which have suspected issues and why.
+- Any edge cases worth testing.
+
+Then prompt:
+> **<group-slug>** is running at <url>. Please test the live criteria
+> listed in the procedure and report your findings.
+
+Wait for the professor's findings. Record each result as a finding line
+in grading-analysis.md (`> ✅ / ⚠️ / ❌`).
 
 ### Adjust scores
 
