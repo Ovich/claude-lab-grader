@@ -68,11 +68,12 @@ Read the following in priority order:
 2. `## Solution Diff` in MIND.md — what a correct implementation looks like
 3. `labs/<lab-slug>/criteria-work.md` — submission samples and analysis (if present)
 4. `labs/<lab-slug>/lab-spec.md` — expected behaviour, constraints, prohibited patterns
-5. `_global/course-material/` — if present, extract relevant content (see Step 1a)
+5. Course material — if `**Course material:**` in MIND.md is not `n/a`, extract relevant content (see Step 1a)
 
 ### Step 1a — Extract course material excerpts (optional)
 
-If `_global/course-material/` exists, scan it for content related to the
+If the `**Course material:**` field in MIND.md points to a path (not `n/a`),
+scan that path for content related to the
 current criteria: concept definitions, expected patterns, constraints, or
 common pitfalls that are explicitly taught in the course.
 
