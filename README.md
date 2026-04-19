@@ -27,6 +27,31 @@ The grader works in three phases:
 
 ---
 
+## Skill invocation graph
+
+```mermaid
+graph TD
+    PROF([Professor])
+
+    PROF -->|grader/init| INIT
+    PROF -->|grader/criteria| CRIT
+    PROF -->|grader/procedure| PROC
+    PROF -->|grader/grade| GRADE
+
+    INIT -->|existing criteria path| PROC
+    INIT -->|generate from scratch| CRIT
+    CRIT -->|after confirmation| PROC
+    CRIT -->|re-run: any change| PROC
+
+    GRADE -->|hidden tests enabled| HT[grader/grade/opt-ins/hidden-tests]
+    GRADE -->|register penalty| PP[grader/grade/opt-ins/penalty-patterns]
+    PP -->|add penalty| PROC
+
+    GRADE -->|all done| FB[grader/feedback ⚠️ planned]
+```
+
+---
+
 ## Key design principles
 
 - **MIND.md is the single source of truth.** All criteria, deadlines, penalties, scoring, grading procedure, and session notes live there. Skills read it on every invocation — never from memory.
