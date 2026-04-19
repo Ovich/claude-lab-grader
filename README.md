@@ -2,6 +2,27 @@
 
 A set of Claude Code skills for grading lab assignments. Designed for courses where students submit work via Git repositories — GitHub Classroom, GitLab, or any other platform. Language and framework agnostic.
 
+```mermaid
+graph TD
+    PROF([Professor])
+
+    PROF --> INIT[grader/init]
+    PROF --> CRIT[grader/criteria]
+    PROF --> PROC[grader/procedure]
+    PROF --> GRADE[grader/grade]
+
+    INIT -->|existing criteria| PROC
+    INIT -->|generate from scratch| CRIT
+    CRIT -->|after confirmation| PROC
+    CRIT -->|re-run: any change| PROC
+
+    GRADE -->|hidden tests enabled| HT[grader/grade/opt-ins/hidden-tests]
+    GRADE -->|register penalty| PP[grader/grade/opt-ins/penalty-patterns]
+    PP -->|add penalty| PROC
+
+    GRADE -->|all done| FB[grader/feedback ⚠️ planned]
+```
+
 ---
 
 ## What it does
@@ -24,31 +45,6 @@ The grader works in three phases:
 | `grader/criteria` | After init, or to update criteria | Generates or updates the grading criteria table from submissions, solution diff, lab spec, and course material |
 | `grader/procedure` | After criteria are confirmed | Generates a per-criterion grading procedure (what to look for, full marks, common deductions) |
 | `grader/grade` | Once per group | Runs tests, analyses code, generates hidden tests if enabled, visual run, finalises scores |
-
----
-
-## Skill invocation graph
-
-```mermaid
-graph TD
-    PROF([Professor])
-
-    PROF --> INIT[grader/init]
-    PROF --> CRIT[grader/criteria]
-    PROF --> PROC[grader/procedure]
-    PROF --> GRADE[grader/grade]
-
-    INIT -->|existing criteria| PROC
-    INIT -->|generate from scratch| CRIT
-    CRIT -->|after confirmation| PROC
-    CRIT -->|re-run: any change| PROC
-
-    GRADE -->|hidden tests enabled| HT[grader/grade/opt-ins/hidden-tests]
-    GRADE -->|register penalty| PP[grader/grade/opt-ins/penalty-patterns]
-    PP -->|add penalty| PROC
-
-    GRADE -->|all done| FB[grader/feedback ⚠️ planned]
-```
 
 ---
 
