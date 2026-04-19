@@ -46,6 +46,7 @@ the professor — do not modify the procedure directly.
 
 Read `labs/<lab-slug>/MIND.md`. Extract:
 - Deadline.
+- **Nature** (`guided` or `free`) — carry as a session variable used by Step 3 (diff scope), Step 5 (free-mode warning), and opt-in guards.
 - Grading analysis template.
 - Scoring table — identify which groups have an empty Analysis column
   (not yet graded) and which have already been graded.

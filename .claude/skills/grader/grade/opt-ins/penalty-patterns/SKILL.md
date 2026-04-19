@@ -58,12 +58,12 @@ Never apply a penalty without verification or explicit professor override.
 
 ## Step 2 — Register via grader/procedure
 
-Once confirmed, invoke `grader/procedure` to add the penalty:
-> ⚠️ New penalty pattern confirmed: `<description>` (proposed: −N pts)
-> Invoking `grader/procedure` to register it.
+Once confirmed, invoke `grader/procedure` and tell it to use **option 3 — Add a new penalty** directly, skipping the menu. Pass the criterion name, description, deduction amount, and suggested ID prefix so it can assign the next available index without prompting.
 
-`grader/procedure` will assign an ID (e.g. `IMPL-02`) and add it to the
-relevant criterion's "Common deductions" table.
+> ⚠️ New penalty pattern confirmed: `<description>` (proposed: −N pts)
+> Invoking `grader/procedure` (option 3 — add penalty) to register it.
+
+`grader/procedure` will assign an ID (e.g. `IMPL-02`), add the row to the criterion's "Common deductions" table, and keep status READY — no re-approval needed.
 
 ---
 

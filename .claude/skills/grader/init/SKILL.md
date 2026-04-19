@@ -466,42 +466,63 @@ Tick `Grading criteria defined` once `grader/criteria` completes.
 
 ## Step 6 — Generate grading analysis template
 
-Using the grading criteria, lab spec, and solution diff, generate the
-**Grading Analysis Template** section in MIND.md.
+Generate the **Grading Analysis Template** section in MIND.md.
+The structure depends on the lab nature read from the MIND.md header.
 
-### Rules
+### Guided lab
 
-**Snippets come from student code — never from the solution reference.**
-The solution diff is used only to understand which files and functions
-students were asked to implement. The actual code shown in the template
-is extracted from the student submission diff (what changed vs the
-starting template).
+Sample a student submission diff to populate file sections and code
+snippets. The template will be reused across all groups.
 
-- One subsection per file students were asked to implement (inferred from
-  criteria and solution diff).
-- For each subsection, prefer showing the **full function or class** so the
-  student has complete visibility of what was reviewed. Only trim to the
-  relevant lines if the function or class is too large (rough guide: over
-  ~30 lines).
-- If the lab gives significant implementation freedom (no strict template),
-  extract the function or block most relevant to each criterion — still
-  full, but scoped to what is being evaluated.
+**Rules:**
+- **Snippets come from student code — never from the solution reference.**
+  The solution diff is used only to understand which files and functions
+  students were asked to implement.
+- One subsection per file students were expected to modify.
+- Prefer showing the **full function or class**. Trim only if over ~30 lines.
 - Each snippet is followed by finding lines: `> ✅ / ⚠️ / ❌`
-- If course material is present and a deduction relates to a specific
-  concept covered there, add a reference:
-  `> 📖 See: lab-spec.md § <section> / course-material/<page>#<anchor>`
-- Ends with a **Score Decisions** table matching the criteria columns.
-- Ends with the grade formula and a Comment field.
+- If course material is present, add references where relevant:
+  `> 📖 See: lab-spec.md § <section>`
+- Ends with a Score Decisions table and grade formula.
 
 ```markdown
 ## Grading Analysis Template
 
 ### `<path/to/file>`
-```
-// student snippet — relevant to the finding
-```
+// student snippet
 > ✅ ...
 > ⚠️ ... 📖 See: lab-spec.md § Expected behaviour
+> ❌ ...
+
+---
+
+### Score Decisions
+
+| Criterion | Score | Reason |
+|-----------|-------|--------|
+| CriterionA [N] | | |
+| CriterionB [N] | | |
+| **Total** | **/Max** | |
+
+**Final Grade:** round((Total / Max × 5) + 1 − Penalties, 0.1) = **X.X**
+
+**Comment:**
+```
+
+### Free lab
+
+Do not sample any submission. Every group has a different project —
+there are no shared files or functions to template. Generate a
+structural-only template: finding markers and Score Decisions table.
+`grader/grade` will fill in observations per group based on that
+group's specific project.
+
+```markdown
+## Grading Analysis Template
+
+### Observations
+> ✅ ...
+> ⚠️ ...
 > ❌ ...
 
 ---
