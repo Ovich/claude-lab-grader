@@ -139,52 +139,24 @@ information is known.
 
 ---
 
-## Step 1b — Identify and verify required tools
+## Step 1b — Tooling
 
-Once all lab information is collected, determine which CLI tools are needed
-based on the submission source, platform, and test setup described.
+Assume all required tools are already available. Proceed directly to Step 2.
 
-### Identify required tools
+If a command fails with a "not found" or similar error during the session,
+use this table to guide the professor:
 
-Derive the tool list from what the professor provided. Examples:
+| Situation | Tool | Install | Auth |
+|-----------|------|---------|------|
+| GitHub repos / Classroom | `gh` | `winget install GitHub.cli` / `brew install gh` | `gh auth login` |
+| GitLab repos | `glab` | `winget install GLab.GLab` / `brew install glab` | `glab auth login` |
+| JS tests | `node`, `npm` | `winget install OpenJS.NodeJS` / `brew install node` | — |
+| Docker tests | `docker` | Install Docker Desktop | — |
+| Any git repo | `git` | `winget install Git.Git` / `brew install git` | — |
 
-| Situation | Likely tools needed |
-|-----------|-------------------|
-| GitHub repos / Classroom | `git`, `gh` |
-| GitLab repos | `git`, `glab` |
-| Running JS tests | `node`, `npm` |
-| Running tests in Docker | `docker` |
-| Any git repo | `git` (always required) |
-
-This list is not exhaustive — use judgement based on the actual submission
-source and test setup described.
-
-### Check availability
-
-For each required tool, check if it is already installed:
-
-```bash
-<tool> --version 2>/dev/null && echo "ok" || echo "missing"
-```
-
-Prefer tools already available on the system. Only flag a tool as missing
-if there is no installed alternative that can do the same job.
-
-### Handle missing tools
-
-For each missing tool, tell the professor clearly:
-
-> To work with `<source>` I need `<tool>`. It is not installed.
-> You can install it with: `<install command>`
-> Or run: `! <install command>` directly in this terminal.
-
-For tools that require authentication (e.g. `gh`, `glab`), provide the
-auth command after installation:
-
-> Once installed, authenticate with: `! <auth command>`
-
-Wait for confirmation that all required tools are available before
-proceeding.
+Tell the professor:
+> `<tool>` is not available. You can install it with `! <install command>`
+> (then `! <auth command>` if auth is required) and let me know when ready.
 
 ---
 
@@ -325,7 +297,7 @@ Tick `Lab info gathered` and `Folder structure created`.
 
 ## Step 4 — Clone and index submissions
 
-Using the tools confirmed in Step 1b, fetch submissions from whatever source
+Using the available tools, fetch submissions from whatever source
 the professor provided. The goal is always the same: repos cloned into
 `labs/<lab-slug>/submissions/<group-slug>/`.
 
