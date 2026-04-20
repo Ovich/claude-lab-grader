@@ -440,7 +440,7 @@ cd _global/lab-solutions/<lab-slug>
 git diff <template-branch>..<solution-branch> -- <relevant dirs>
 ```
 
-Write the result to `## Solution Diff` in MIND.md. Tick `Solution diff generated`.
+Write the raw `git diff` output verbatim to `## Solution Diff` in MIND.md — do not summarise, interpret, or reformat it. Tick `Solution diff generated`.
 
 8. Invoke `grader/procedure` to generate the grading procedure.
 
@@ -454,7 +454,7 @@ cd _global/lab-solutions/<lab-slug>
 git diff <template-branch>..<solution-branch> -- <relevant dirs>
 ```
 
-Write the result to `## Solution Diff` in MIND.md. Tick `Solution diff generated`.
+Write the raw `git diff` output verbatim to `## Solution Diff` in MIND.md — do not summarise, interpret, or reformat it. Tick `Solution diff generated`.
 
 Then invoke `grader/criteria`. It will analyse submissions, the solution
 diff, lab spec, and course material, propose criteria, write them to MIND.md,
@@ -466,33 +466,38 @@ Tick `Grading criteria defined` once `grader/criteria` completes.
 
 ## Step 6 — Generate grading analysis template
 
+**Prerequisite:** `## Grading Procedure` in MIND.md must have `<!-- status: READY -->`.
+If it is still DRAFT, wait for professor approval before proceeding.
+
 Generate the **Grading Analysis Template** section in MIND.md.
 The structure depends on the lab nature read from the MIND.md header.
 
 ### Guided lab
 
-Sample a student submission diff to populate file sections and code
-snippets. The template will be reused across all groups.
+Derive the template from the **solution diff** and the approved **grading procedure** —
+do not sample any student submission. The template will be reused across all groups;
+actual student code is filled in per group during grading.
 
 **Rules:**
-- **Snippets come from student code — never from the solution reference.**
-  The solution diff is used only to understand which files and functions
-  students were asked to implement.
-- One subsection per file students were expected to modify.
-- Prefer showing the **full function or class**. Trim only if over ~30 lines.
-- Each snippet is followed by finding lines: `> ✅ / ⚠️ / ❌`
-- If course material is present, add references where relevant:
-  `> 📖 See: lab-spec.md § <section>`
+- One subsection per file students were expected to modify (from the solution diff).
+- Each subsection has a placeholder code block: `// student code` (never pre-filled).
+  For multi-function files, list each relevant function as a named block.
+- Each code block is followed by finding prompts derived from the procedure's
+  "What to look for" items for the relevant criterion — written as yes/no checks.
+- Add `📖 See: lab-spec.md § <section>` references where the procedure references
+  the lab spec.
 - Ends with a Score Decisions table and grade formula.
 
 ```markdown
 ## Grading Analysis Template
 
-### `<path/to/file>`
-// student snippet
-> ✅ ...
-> ⚠️ ... 📖 See: lab-spec.md § Expected behaviour
-> ❌ ...
+### `<path/to/file>` — `<functionName>`
+```js
+// student code
+```
+> ✅ / ⚠️ / ❌ <check from procedure "What to look for"> ?
+> ✅ / ⚠️ / ❌ <check from procedure "What to look for"> ?
+> 📖 See: lab-spec.md § <section>
 
 ---
 
